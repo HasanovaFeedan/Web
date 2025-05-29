@@ -74,3 +74,75 @@
     .buttons button.active {
       opacity: 1;
     }
+    
+
+
+
+
+
+
+
+
+    .galeri {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 60px 20px;
+}
+
+.kart {
+  width: 90%;
+  max-width: 600px;
+
+  padding: 20px;
+  border-radius: 16px;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1.6s ease, transform 1.6s ease;
+}
+
+.kart.gorunur {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.kart img {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+}
+
+.baslik {
+  margin-top: 16px;
+  font-size:20px;
+  text-align: center;
+  color: #ffffff;
+
+
+}
+
+
+.kart.sola {
+  align-self: flex-start;
+}
+.kart.ortada {
+  align-self: center;
+}
+.kart.saga {
+  align-self: flex-end;
+}
+.baslik {
+  margin-top: 16px;
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1.6s ease, transform 1.6s ease;
+}
+
+.kart.gorunur .baslik {
+  opacity: 1;
+  transform: translateY(0);
+}

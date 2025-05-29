@@ -206,26 +206,24 @@ Portfolio
           <h2 data-parts-filter-title class="w-[116rem] font-noto text-4 font-light italic leading-4 tracking-3 md:w-auto md:text-3 md:leading-3">
             Category
           </h2>
-          <ul class="md:mt-[24rem]">
+     <ul class="md:mt-[24rem]">
              
         <li>  
-  <button value="DESIGN" type="button" class="opacity-60">CRM Systems</button>
+  <button value="CRM" type="button" class="opacity-60" data-mouse-target="CRM">CRM Systems</button>
 </li>
 <li class="mt-[16rem]">
-  <button value="Mobile" type="button" class="opacity-60">Mobil Applications</button>
+  <button value="Mobile" type="button" class="opacity-60" data-mouse-target="MOBIL APP">Mobil Applications</button>
 </li>
 <li class="mt-[16rem]">
-  <button value="WEB" type="button" class="opacity-60">Web-Sites</button>
+  <button value="WEB" type="button" class="opacity-60" data-mouse-target="WEB-SITE">Web-Sites</button>
 </li>
 <li class="mt-[16rem]">
-  <button value="dg" type="button" class="opacity-60">Digicards</button>
+  <button value="dg" type="button" class="opacity-60" data-mouse-target="DIGICARDS">Digicards</button>
 </li>
 <li class="mt-[16rem]">
-  <button value="treed" type="button" class="opacity-60">3D Online Catalog</button>
+  <button value="treed" type="button" class="opacity-60" data-mouse-target="3D">3D Online Catalog</button>
 </li>
-<li class="mt-[16rem]">
-  <button value="ALL" type="button" class="opacity-60">All</button>
-</li>
+
           </ul>
         </div>
     <button data-parts-filter-button-close class="mt-[40rem] text-5 leading-5 md:hidden" type="button"> CLOSE </button>
@@ -274,6 +272,39 @@ Portfolio
 
 <!-- salam -->
 </section>
+<section class="galeri">
+  <div class="kart ortada cardt" data-category="WEB">
+    <img src="/assets/images/work_01_Z1I9tYq.jpg" alt="AKFA Medline" />
+    <p class="baslik">AKFA Medline</p>
+  </div>
+
+  <div class="kart sola cardt" data-category="WEB">
+    <img src="/assets/images/work_02_dpnKS.jpg" alt="Children for Planet" />
+    <p class="baslik">Children for Planet</p>
+  </div>
+
+  <div class="kart saga cardt" data-category="WEB">
+    <img src="/assets/images/work_03_r9YRQ.jpg" alt="Azali" />
+    <p class="baslik">Azali</p>
+  </div>
+
+  <div class="kart sola cardt" data-category="dg">
+    <img src="/assets/images/work_04_ZEkGaB.jpg" alt="Higold" />
+    <p class="baslik">Higold</p>
+  </div>
+
+  <div class="kart ortada cardt" data-category="WEB">
+    <img src="/assets/images/work_05_Z1bJu8d.jpg" alt="Bridge Cargo" />
+    <p class="baslik">Bridge Cargo</p>
+  </div>
+
+  <div class="kart saga cardt" data-category="treed">
+    <img src="/assets/images/work_06_Z1I9i5O.jpg" alt="Cityled" />
+    <p class="baslik">Cityled</p>
+  </div>
+</section>
+
+
 
       </main>
       <footer translate="no" class="base-grid footer-transition relative z-[9995] grid h-screenMin overflow-hidden text-sub">
@@ -457,20 +488,16 @@ Portfolio
     location.reload();
   }
 </script>
-
 <script>
   window.onload = function () {
+    // Yenileme kontrolü (gerekliyse tut)
     if (!sessionStorage.getItem('refreshed')) {
       sessionStorage.setItem('refreshed', 'true');
       window.location.reload();
-      return; 
+      return;
     } else {
       sessionStorage.removeItem('refreshed');
     }
-
-  
-    const urlParams = new URLSearchParams(window.location.search);
-    const initialFilter = urlParams.get('filter');
 
     const filterButtons = document.querySelectorAll("button[value]");
     const cards = document.querySelectorAll(".cardt");
@@ -478,7 +505,7 @@ Portfolio
     function applyFilter(value) {
       cards.forEach((card) => {
         const cardCategory = card.getAttribute("data-category");
-        if (value === "ALL" || cardCategory === value) {
+        if (cardCategory === value) {
           card.style.display = "block";
         } else {
           card.style.display = "none";
@@ -487,15 +514,16 @@ Portfolio
 
       filterButtons.forEach((btn) => {
         btn.classList.remove("opacity-100");
+        btn.classList.add("opacity-60");
         if (btn.value === value) {
+          btn.classList.remove("opacity-60");
           btn.classList.add("opacity-100");
         }
       });
     }
 
-    if (initialFilter) {
-      applyFilter(initialFilter);
-    }
+    // Sayfa açıldığında "CRM" kategorisini göster
+    applyFilter("CRM");
 
     filterButtons.forEach((button) => {
       button.addEventListener("click", () => {
@@ -503,6 +531,32 @@ Portfolio
       });
     });
   };
+</script>
+<script>
+  const kartlar = document.querySelectorAll(".kart");
+
+  const gozetleyici = new IntersectionObserver((girisler) => {
+    girisler.forEach((giris) => {
+      if (giris.isIntersecting) {
+        giris.target.classList.add("gorunur");
+      }
+    });
+  }, {
+    threshold: 1
+  });
+
+  kartlar.forEach((kart) => {
+    gozetleyici.observe(kart);
+  });
+  
+</script>
+<script>
+  const url = new URL(window.location.href);
+
+  if (!url.searchParams.has("refreshed")) {
+    url.searchParams.set("refreshed", "1");
+    window.location.href = url.toString();
+  }
 </script>
 
 
