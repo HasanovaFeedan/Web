@@ -546,15 +546,10 @@ Portfolio
   /> -->
 </div>
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"94248e3d2f4466ca","version":"2025.4.0-1-g37f21b1","r":1,"token":"a26ddd79502f440691d66049d78d4dae","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
-  <script>
-  if (!window.location.hash.includes('#reloaded')) {
-    window.location.hash = '#reloaded';
-    location.reload();
-  }
-</script>
+
 <script>
   window.onload = function () {
-    // Yenileme kontrolü (gerekliyse tut)
+ 
     if (!sessionStorage.getItem('refreshed')) {
       sessionStorage.setItem('refreshed', 'true');
       window.location.reload();
@@ -586,7 +581,7 @@ Portfolio
       });
     }
 
-    // Sayfa açıldığında "CRM" kategorisini göster
+   
     applyFilter("CRM");
 
     filterButtons.forEach((button) => {
