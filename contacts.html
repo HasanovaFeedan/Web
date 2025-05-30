@@ -56,10 +56,12 @@ const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=
   <body>
     <header translate="no" class="relative z-[9996] w-full text-sub opacity-0 duration-500 ease-out">
  <div class="fixed left-0 top-10 ">
-<img 
+<a href="index.html" class="fixed left-0 top-0 mr-[20rem] mt-[20rem] text-4 leading-4 tracking-4" aria-label="Navigate">
+ <img 
   src="./assets/images/logo.svg.svg" 
   alt="logo"
-  style="width: 80px; height: auto; position: fixed; top: 0; left: 0; margin-top: 20rem; margin-left: 20rem;" />
+  style="width: 80px; height: auto " />
+  </a>
 
   </div>
   <!-- <button
@@ -91,9 +93,9 @@ const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=
             </li>
     
             <li>
-              <a data-mouse-target="PORTFOLIO" href="/works/works.html" class="inline-block h-[1em] overflow-hidden">
-                <span data-menu-item-name>PORTFOLIO</span>
-              </a>
+   
+                <span   data-service-item="0" data-category="WEB" onclick="redirectToWorks(this)"   data-menu-item-name>PORTFOLIO</span>
+          
             </li> 
             <li>
               <a data-mouse-target="CONTACT US" href="/contact.html" class="inline-block h-[1em] overflow-hidden">
@@ -275,10 +277,11 @@ const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=
           <a data-footer-link data-mouse-target="HOME" href="/index.html">
             <span>HOME</span>
           </a>
-        </li><li>
-          <a data-footer-link data-mouse-target="PORTFOLIO" href="/works/works.html">
-            <span>PORTFOLIO</span>
-          </a>
+        </li>
+        <li data-service-item="0" data-category="WEB" onclick="redirectToWorks(this)" >
+      
+            <span >PORTFOLIO</span>
+         
         </li>
         <li>
           <a data-footer-link data-mouse-target="CONTACT US" href="/contact.html">
@@ -447,6 +450,11 @@ const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=
     localStorage.removeItem("refreshedOnce");
   }
 </script>
-
+    <script>
+      function redirectToWorks(element) {
+    const category = element.getAttribute("data-category");
+    window.location.href = `http://127.0.0.1:5500/works/works.html?filter=${category}`;
+  }
+  </script>
   </body>
   </html>
