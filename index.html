@@ -1043,7 +1043,6 @@ F
     <script>
       function redirectToWorks(element) {
     const category = element.getAttribute("data-category");
-    // window.location.href = `http://127.0.0.1:5500/works/works.html?filter=${category}`;
     window.location.href = `/works/works.html?filter=${category}`;
 
   }
@@ -1070,14 +1069,7 @@ F
     }
   });
 </script>
-<!-- <script>
-  if (!localStorage.getItem("refreshedOnce")) {
-    localStorage.setItem("refreshedOnce", "true");
-    location.reload();
-  } else {
-    localStorage.removeItem("refreshedOnce");
-  }
-</script> -->
+
 
 </div>
   </body></html>
