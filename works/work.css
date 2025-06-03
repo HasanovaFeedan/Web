@@ -83,60 +83,84 @@
 
 .galeri {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  padding: 50px 20px;
+  flex-direction: column;
+  gap: 60px;
+  padding: 100px 20px;
+  align-items: center;
 }
 
-/* Kartlar */
 .kart {
-  width: 45%;
-  max-width: 500px;
-
-  border-radius: 16px;
- 
-  overflow: hidden;
   opacity: 0;
   transform: translateY(50px);
-  animation: fadeUp 1s ease forwards;
+  animation: fadeInUp 1s ease forwards;
+  animation-timeline: view();
+  animation-range: entry 20% cover 40%;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 20px;
+
 }
 
 .kart img {
-  width: 100%;
-  height: auto;
-  display: block;
+  max-width: 100%;      
+  height: auto;         
+  display: block;       
+  border-radius: 8px;
+  margin-bottom: 5px;
 }
 
-/* Başlıq (alt yazı) */
+
+.kart.sola {
+  align-self: flex-start;
+}
+
+.kart.saga {
+  align-self: flex-end;
+}
+
+.kart.ortada {
+  align-self: center;
+}
+
 .baslik {
-  padding: 15px;
-  font-size: 20px;
- 
-  text-align: center;
-  color: #ffffff;
+  text-align: center;       /* Yazıları yatayda ortada */
+  font-size: 14px;        /* Normal ölçü */
 
-
+  margin-top: 10px;
+  display: block;           /* Blok elementi olmaq */
+  width: 100%;              /* Yerləşdiyi konteynerin tam eni */
+  box-sizing: border-box;   /* Padding-in ölçü daxilinə alınması */
 }
 
-/* Fade-in və yukarı animasiya */
-@keyframes fadeUp {
+.kart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;      
+  text-align: center;
+}
+
+
+
+/* Animasiya */
+@keyframes fadeInUp {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
-/* Gecikmələr - sırayla gəlməsi üçün */
-.kart:nth-child(1) { animation-delay: 1s; }
-.kart:nth-child(2) { animation-delay: 1s; }
-.kart:nth-child(3) { animation-delay: 0.6s; }
-.kart:nth-child(4) { animation-delay: 1s; }
-
-/* Responsive düzəliş */
 @media (max-width: 768px) {
-  .kart {
-    width: 100%;
+  .baslik {
+    font-size: 10px;      /* Planşetlər üçün */
   }
 }
 
+@media (max-width: 480px) {
+  .baslik {
+    font-size: 7px;        /* Mobil telefonlar üçün */
+  }
+}
