@@ -94,7 +94,9 @@ const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=
     
             <li>
    
-                <span   data-service-item="0" data-category="WEB" onclick="redirectToWorks(this)"   data-menu-item-name>PORTFOLIO</span>
+            <a data-mouse-target="PORTFOLIO" href="works/works.html" class="inline-block h-[1em] overflow-hidden">
+                <span data-menu-item-name>PORTFOLIO</span>
+              </a>
           
             </li> 
             <li>
@@ -278,10 +280,10 @@ const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=
             <span>HOME</span>
           </a>
         </li>
-        <li data-service-item="0" data-category="WEB" onclick="redirectToWorks(this)" >
-      
-            <span >PORTFOLIO</span>
-         
+     <li>
+          <a data-footer-link data-mouse-target="PORTFOLIO" href="/works/works.html">
+            <span>PORTFOLIO</span>
+          </a>
         </li>
         <li>
           <a data-footer-link data-mouse-target="CONTACT US" href="/contact.html">

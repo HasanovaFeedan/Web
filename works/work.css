@@ -81,68 +81,62 @@
 
 
 
-
-
-    .galeri {
+.galeri {
   display: flex;
-  flex-direction: column;
-  gap: 40px;
-  padding: 60px 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 50px 20px;
 }
 
+/* Kartlar */
 .kart {
-  width: 90%;
-  max-width: 600px;
+  width: 45%;
+  max-width: 500px;
 
-  padding: 20px;
   border-radius: 16px;
+ 
+  overflow: hidden;
   opacity: 0;
-  transform: translateY(60px);
-  transition: opacity 1.6s ease, transform 1.6s ease;
-}
-
-.kart.gorunur {
-  opacity: 1;
-  transform: translateY(0);
+  transform: translateY(50px);
+  animation: fadeUp 1s ease forwards;
 }
 
 .kart img {
   width: 100%;
-  border-radius: 12px;
+  height: auto;
   display: block;
 }
 
+/* Başlıq (alt yazı) */
 .baslik {
-  margin-top: 16px;
-  font-size:20px;
-  text-align: center;
-  color: #ffffff;
-
-
-}
-
-
-.kart.sola {
-  align-self: flex-start;
-}
-.kart.ortada {
-  align-self: center;
-}
-.kart.saga {
-  align-self: flex-end;
-}
-.baslik {
-  margin-top: 16px;
+  padding: 15px;
   font-size: 20px;
+ 
   text-align: center;
   color: #ffffff;
 
-  opacity: 0;
-  transform: translateY(60px);
-  transition: opacity 1.6s ease, transform 1.6s ease;
+
 }
 
-.kart.gorunur .baslik {
-  opacity: 1;
-  transform: translateY(0);
+/* Fade-in və yukarı animasiya */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+/* Gecikmələr - sırayla gəlməsi üçün */
+.kart:nth-child(1) { animation-delay: 1s; }
+.kart:nth-child(2) { animation-delay: 1s; }
+.kart:nth-child(3) { animation-delay: 0.6s; }
+.kart:nth-child(4) { animation-delay: 1s; }
+
+/* Responsive düzəliş */
+@media (max-width: 768px) {
+  .kart {
+    width: 100%;
+  }
+}
+
