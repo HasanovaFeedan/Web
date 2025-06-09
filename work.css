@@ -210,3 +210,30 @@
   text-align: center;
   z-index: 3;
 }
+@media (max-width: 768px) {
+  .cardt:hover .card__headt {
+    font-size: 5px;
+    top: calc(100% - 1.5em);
+  }
+  .pe{
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardt:hover .card__headt {
+    font-size: 5px;
+    width: 50px;
+    height: 30px;
+    top: calc(100% - 1.2em);
+  }
+  .pe{
+    font-size: 10px;
+  }
+}
+
+.card__headt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
