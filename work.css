@@ -83,8 +83,9 @@
 }
 
 .kart {
-  width: 90%;
+  width: 100%;
   max-width: 400px;
+  margin: 0 auto; /* Her zaman ortada */
   opacity: 0;
   transform: translateY(80px);
   animation: fadeInUp 0.8s ease-out forwards;
@@ -104,18 +105,29 @@
   text-align: center;
 }
 
-/* Konuma göre hizalama */
-.kart.ortada {
-  margin: 0 auto;
+/* Yalnızca geniş ekranlarda sola/sağa/ortaya hizalama uygula */
+@media (min-width: 768px) {
+  .kart.sola {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .kart.saga {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  .kart.ortada {
+    margin: 0 auto;
+  }
+}
+.kart img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px; 
+  display: block;
 }
 
-.kart.sola {
-  margin-left: 0;
-}
-
-.kart.saga {
-  margin-left: auto;
-}
 
 /* Giriş animasyonu */
 @keyframes fadeInUp {
@@ -183,16 +195,16 @@
   );
   transform: skewX(-25deg);
   z-index: 2;
-  display: none; /* Başlangıçta gizli */
+  display: none; 
 }
 
-/* Hover olduğunda ışık çizgisi görünür olacak */
+
 .kart:hover::before {
   display: block;
   animation: shine 1s ease forwards;
 }
 
-/* Işık çizgisi geçiş animasyonu */
+
 @keyframes shine {
   0% {
     left: -75%;
@@ -236,4 +248,38 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+
+@media (max-width: 768px) {
+  .containerr {
+    flex-direction: column;
+    transform: none;
+    margin: 5vmin;
+    gap: 20px;
+  }
+
+  .cardt {
+    flex: none;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .cardt img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .card__headt {
+    transform: none !important;
+    position: static;
+    font-size: 1.2em;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+  }
 }
